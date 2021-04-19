@@ -79,3 +79,4 @@ D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\D
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CopyComplete
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.pdb
+D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csprojAssemblyReference.cache
