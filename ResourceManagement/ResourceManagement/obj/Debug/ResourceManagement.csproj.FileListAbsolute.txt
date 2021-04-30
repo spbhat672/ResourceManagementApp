@@ -1,3 +1,4 @@
+D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CoreCompileInputs.cache
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.dll.config
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.pdb
@@ -75,7 +76,6 @@ D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\S
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Newtonsoft.Json.xml
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Antlr3.Runtime.pdb
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CoreCompileInputs.cache
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CopyComplete
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.pdb

@@ -47,15 +47,17 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.PostAsJsonAsync($"api/Post/", resModel).Result;
-
+                ResourceRequestModel requestModel = new ModelDataConversion().DataModelToRequestModel(resModel);
+                HttpResponseMessage response = client.PostAsJsonAsync($"api/Post/", requestModel).Result;
+                
                 if (response.IsSuccessStatusCode)
                 {
                     // Get the response
                     var resourceJsonString = response.Content.ReadAsStringAsync().Result;
 
                     // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
-                    var deserialized = JsonConvert.DeserializeObject<ResourceWithValue>(resourceJsonString);
+                    var deserialized = JsonConvert.DeserializeObject<ResourceResponseModel>(resourceJsonString);
+                    responseObj = new ModelDataConversion().ResponseModelToDataModel(deserialized);
                 }
             }
             return responseObj;
@@ -71,7 +73,8 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.PutAsJsonAsync($"api/Put/", resModel).Result;
+                ResourceRequestModel requestModel = new ModelDataConversion().DataModelToRequestModel(resModel);
+                HttpResponseMessage response = client.PutAsJsonAsync($"api/Put/", requestModel).Result;
 
                 if (response.IsSuccessStatusCode)
                 {                   

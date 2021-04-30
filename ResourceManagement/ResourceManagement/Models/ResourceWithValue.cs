@@ -23,4 +23,5 @@ namespace ResourceManagement.Models
 
         public string Name { get; set; }
     }
+
 }

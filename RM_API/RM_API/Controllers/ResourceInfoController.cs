@@ -1,4 +1,6 @@
-﻿using RM_API.Models;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RM_API.Models;
 using RM_API.WebMethod;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,7 @@ namespace RM_API.Controllers
     {
         [System.Web.Http.HttpGet]        
         [System.Web.Http.Route("api/Get")]
-        public HttpResponseMessage Get(long? id)
+        public HttpResponseMessage Get([FromUri]long? id)
         {
             try
             {
@@ -31,12 +33,20 @@ namespace RM_API.Controllers
 
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/Post")]
-        public HttpResponseMessage Post(ResourceWithValue model)
+        public HttpResponseMessage Post([FromUri]string model)
         {
             try
             {
-                ResourceRepository.AddResourceInfo(model);
-                return Request.CreateResponse(System.Net.HttpStatusCode.OK, model);
+                JObject jObj = JObject.Parse(model);
+                ResourceRequestModel myModel = new ResourceRequestModel();
+                myModel = jObj.ToObject<ResourceRequestModel>();
+                //var obj = JsonConvert.DeserializeObject<ResourceRequestModel>(model); //even works fine....
+
+                var resource = new ModelDataConversion().RequestModelToDataModel(myModel);
+                ResourceRepository.AddResourceInfo(resource);
+
+                var response = new ModelDataConversion().DataModelToResponseModel(resource, myModel);
+                return Request.CreateResponse(System.Net.HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
@@ -46,11 +56,17 @@ namespace RM_API.Controllers
 
         [System.Web.Http.HttpPut]
         [System.Web.Http.Route("api/Put")]
-        public HttpResponseMessage Put(ResourceWithValue model)
+        public HttpResponseMessage Put([FromUri] string model)
         {
             try
             {
-                ResourceRepository.UpdateResourceInfo(model);
+                JObject jObj = JObject.Parse(model);
+                ResourceRequestModel myModel = new ResourceRequestModel();
+                myModel = jObj.ToObject<ResourceRequestModel>();
+
+                var resource = new ModelDataConversion().RequestModelToDataModel(myModel);
+                var response = new ModelDataConversion().DataModelToResponseModel(resource, myModel);
+                ResourceRepository.UpdateResourceInfo(resource);
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK, 202);
             }
             catch (Exception ex)
