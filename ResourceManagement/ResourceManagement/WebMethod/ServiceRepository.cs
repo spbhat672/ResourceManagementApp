@@ -23,7 +23,8 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.GetAsync($"api/Get/?id={null}").Result;
+                //string request = ModelDataConversion.DataModelToGetRequestModel(null);
+                HttpResponseMessage response = client.GetAsync($"api/GetResource?id={null}").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -43,13 +44,14 @@ namespace ResourceManagement.WebMethod
             ResourceWithValue responseObj = new ResourceWithValue();
             using (var client = new HttpClient())
             {
+                //string requestModel = ModelDataConversion.DataModelToRequestModel(resModel);
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                ResourceRequestModel requestModel = new ModelDataConversion().DataModelToRequestModel(resModel);
-                HttpResponseMessage response = client.PostAsJsonAsync($"api/Post/", requestModel).Result;
-                
+                HttpResponseMessage response = client.PostAsJsonAsync($"api/PostResource/", resModel).Result;
+
+
                 if (response.IsSuccessStatusCode)
                 {
                     // Get the response
@@ -57,7 +59,7 @@ namespace ResourceManagement.WebMethod
 
                     // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
                     var deserialized = JsonConvert.DeserializeObject<ResourceResponseModel>(resourceJsonString);
-                    responseObj = new ModelDataConversion().ResponseModelToDataModel(deserialized);
+                    responseObj = ModelDataConversion.ResponseModelToDataModel(deserialized);
                 }
             }
             return responseObj;
@@ -73,8 +75,8 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                ResourceRequestModel requestModel = new ModelDataConversion().DataModelToRequestModel(resModel);
-                HttpResponseMessage response = client.PutAsJsonAsync($"api/Put/", requestModel).Result;
+                //string requestModel = ModelDataConversion.DataModelToRequestModel(resModel);
+                HttpResponseMessage response = client.PutAsJsonAsync($"api/PutResource/", resModel).Result;
 
                 if (response.IsSuccessStatusCode)
                 {                   
@@ -92,7 +94,7 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = client.DeleteAsync("api/Delete/?id=" + id.ToString()).Result;
+                HttpResponseMessage response = client.DeleteAsync("api/DeleteResource?id=" + id).Result;
 
                 if (response.IsSuccessStatusCode)
                     return true;

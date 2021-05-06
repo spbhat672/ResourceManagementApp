@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.1\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -163,6 +169,8 @@
     </Compile>
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Resource.cs" />
+    <Compile Include="Models\ResourceGetRequestModel.cs" />
+    <Compile Include="Models\ResourceGetResponseModel.cs" />
     <Compile Include="Models\ResourceRequestModel.cs" />
     <Compile Include="Models\ResourceResponseModel.cs" />
     <Compile Include="Models\ResourceWithValue.cs" />

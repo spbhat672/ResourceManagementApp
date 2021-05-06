@@ -1,4 +1,5 @@
-D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CoreCompileInputs.cache
+D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.dll.config
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\ResourceManagement.pdb
@@ -15,8 +16,6 @@ D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\r
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.Managed.Core.targets
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.VisualBasic.Core.targets
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -76,7 +75,7 @@ D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\S
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Newtonsoft.Json.xml
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Antlr3.Runtime.pdb
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CoreCompileInputs.cache
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csproj.CopyComplete
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.dll
 D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.pdb
-D:\3DS\Assignment\ResourceManagement\ResourceManagement\ResourceManagement\obj\Debug\ResourceManagement.csprojAssemblyReference.cache

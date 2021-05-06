@@ -6,24 +6,70 @@ using System.Web;
 
 namespace ResourceManagement.WebMethod
 {
-    public class ModelDataConversion
+    public static class ModelDataConversion
     {
-        public ResourceRequestModel DataModelToRequestModel(ResourceWithValue data)
+        public static string DataModelToRequestModel(ResourceWithValue data)
         {
-            ResourceRequestModel request = new ResourceRequestModel();
-            //request.header.requestId = 1;
-            //request.header.requestType = "resourceState";
-            //request.header.producer.id = "1";
-            //request.header.version = "1.0";
-            //request.header.dateMsg = Convert.ToDateTime("20180203 10:00:00");
-            //request.body.dates = Convert.ToDateTime("2018-01-30T08:00:00Z");
-            //request.body.itemSet.items.id = "extid1";
-            //request.body.itemSet.items.tags = data;
+            string request = @"{  
+								'header': {
+											'requestId' : 1, 					
+											'requestType' : 'resourceState',		
+											'producer' : { 'id':'1'}, 				
+											'version' :'1.0',	
+											'dateMsg': " + DateTime.Now + @"
+											},
+								'body': {
+											'dates': " + DateTime.Now + @", 
+											'itemSet': {
+												'items': {
+													'id': 'extId1',
+															'tags': {
+																		'Id': " + data.Id + @", 
+																		'TypeId': " + data.TypeId + @", 
+																		'Type': " + data.Type + @", 
+					 													'StatusId': " + data.StatusId + @", 
+																		'Status': " + data.Status + @", 
+																		'LocationId': " + data.LocationId + @", 
+																        'LocationValue': {
+															                                'Id': " + data.LocationValue.Id + @",
+																							'X': " + data.LocationValue.X + @",
+																							'Y': " + data.LocationValue.Y + @",
+																							'Z': " + data.LocationValue.Z + @",
+																							'Rotation': " + data.LocationValue.Rotation + @",
+																					}, 
+																'Name': " + data.Name + @",
+															}
+												    }
+                                              }
+										}
+									}";
 
             return request;
         }
 
-        public ResourceWithValue ResponseModelToDataModel(ResourceResponseModel response)
+		public static string DataModelToGetRequestModel(long? id)
+        {
+			string request = @"{  
+								'header': {
+											'requestId' : 1, 					
+											'requestType' : 'resourceState',		
+											'producer' : { 'id':'1'}, 				
+											'version' :'1.0',	
+											'dateMsg': " + DateTime.Now + @"
+											},
+								'body': {
+											'dates': " + DateTime.Now + @", 
+											'itemSet': {
+												'items': {
+                                                    'Id': " + id + @"
+												}
+											}
+										}
+									}";
+			return request;
+		}
+
+        public static ResourceWithValue ResponseModelToDataModel(ResourceResponseModel response)
         {
             return (response.body.resourceState.tags);
         }
