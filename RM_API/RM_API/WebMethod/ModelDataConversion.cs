@@ -50,16 +50,11 @@ namespace RM_API.WebMethod
                                                                   }
                                             }
                                     }";
-            //ResourceResponseModel response = new ResourceResponseModel();
-            //response.header.sourceRequest.requestId = ;
-            //response.header.sourceRequest.requestType = req.header.requestType;
-            //response.header.sourceRequest.version = req.header.version;
-            //response.header.messageType = req.header.requestType;
-            //response.header.version = req.header.version;
-            //response.header.dateMsg = DateTime.Now;
-            //response.body.resourceState.id = req.body.itemSet.items.id;
-            //response.body.resourceState.tags = req.body.itemSet.items.tags;
 
+
+            jsonRsponse = jsonRsponse.Replace("\n", "").ToString();
+            jsonRsponse = jsonRsponse.Replace("\t", "").ToString();
+            jsonRsponse = jsonRsponse.Replace("\r", "").ToString();
             return jsonRsponse;
             //var config = new MapperConfiguration(cfg => {
             //    cfg.CreateMap<ResourceRequestModel, ResourceResponseModel>()
@@ -123,6 +118,9 @@ namespace RM_API.WebMethod
                                 }";
 
             string jsonString = jsonStr1 + jsonStr2 + jsonStr3;
+            jsonString = jsonString.Replace("\n", "").ToString();
+            jsonString = jsonString.Replace("\t", "").ToString();
+            jsonString = jsonString.Replace("\r", "").ToString();
             return jsonString;
         }
     }
