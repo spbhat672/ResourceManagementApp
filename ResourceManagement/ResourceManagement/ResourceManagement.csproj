@@ -141,9 +141,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Resource.cs" />
-    <Compile Include="Models\ResourceRequestModel.cs" />
-    <Compile Include="Models\ResourceRequestStructure.cs" />
     <Compile Include="Models\ResourceResponseModel.cs" />
     <Compile Include="Models\ResourceWithValue.cs" />
     <Compile Include="Models\Status.cs" />

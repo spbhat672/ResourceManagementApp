@@ -23,7 +23,6 @@ namespace ResourceManagement.WebMethod
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                //string request = ModelDataConversion.DataModelToGetRequestModel(null);
                 HttpResponseMessage response = client.GetAsync($"api/GetResource?id={null}").Result;
 
                 if (response.IsSuccessStatusCode)
@@ -44,7 +43,6 @@ namespace ResourceManagement.WebMethod
             ResourceWithValue responseObj = new ResourceWithValue();
             using (var client = new HttpClient())
             {
-                //string requestModel = ModelDataConversion.DataModelToRequestModel(resModel);
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -56,8 +54,6 @@ namespace ResourceManagement.WebMethod
                 {
                     // Get the response
                     var resourceJsonString = response.Content.ReadAsStringAsync().Result;
-
-                    // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
                     var deserialized = JsonConvert.DeserializeObject<ResourceResponseModel>(resourceJsonString);
                     responseObj = ModelDataConversion.ResponseModelToDataModel(deserialized);
                 }
@@ -74,8 +70,6 @@ namespace ResourceManagement.WebMethod
                 client.BaseAddress = new Uri(baseUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                //string requestModel = ModelDataConversion.DataModelToRequestModel(resModel);
                 HttpResponseMessage response = client.PutAsJsonAsync($"api/PutResource/", resModel).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -118,8 +112,6 @@ namespace ResourceManagement.WebMethod
                 {
                     // Get the response
                     var resourceJsonString = response.Content.ReadAsStringAsync().Result;
-
-                    // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
                     var deserialized = JsonConvert.DeserializeObject(resourceJsonString, typeof(List<Models.Type>));
                     responseObj = (List<Models.Type>)deserialized;
                     responseObj.Insert(0, new Models.Type() { Id = -9999, Name = "Choose One Type" });
@@ -143,8 +135,6 @@ namespace ResourceManagement.WebMethod
                 {
                     // Get the response
                     var resourceJsonString = response.Content.ReadAsStringAsync().Result;
-
-                    // Deserialise the data (include the Newtonsoft JSON Nuget package if you don't already have it)
                     var deserialized = JsonConvert.DeserializeObject(resourceJsonString, typeof(List<Models.Status>));
                     responseObj = (List<Models.Status>)deserialized;
                     responseObj.Insert(0, new Models.Status() { Id = -9999, Name = "Choose One Status" });

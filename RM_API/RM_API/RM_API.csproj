@@ -163,16 +163,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ResourceInfoController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\Resource.cs" />
     <Compile Include="Models\ResourceGetRequestModel.cs" />
-    <Compile Include="Models\ResourceGetResponseModel.cs" />
     <Compile Include="Models\ResourceRequestModel.cs" />
-    <Compile Include="Models\ResourceResponseModel.cs" />
     <Compile Include="Models\ResourceWithValue.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\Type.cs" />
@@ -233,7 +229,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Resource\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -56,21 +56,6 @@ namespace RM_API.WebMethod
             jsonRsponse = jsonRsponse.Replace("\t", "").ToString();
             jsonRsponse = jsonRsponse.Replace("\r", "").ToString();
             return jsonRsponse;
-            //var config = new MapperConfiguration(cfg => {
-            //    cfg.CreateMap<ResourceRequestModel, ResourceResponseModel>()
-            //       .ForMember(destination => destination.header.sourceRequest.requestId, map => map.MapFrom(x => x.header.requestId))
-            //       .ForMember(destination => destination.header.sourceRequest.requestType, map => map.MapFrom(x => x.header.requestType))
-            //       .ForMember(destination => destination.header.sourceRequest.version, map => map.MapFrom(x => x.header.version))
-            //       .ForMember(destination => destination.header.messageType, map => map.MapFrom(x => x.header.requestType))
-            //       .ForMember(destination => destination.header.version, map => map.MapFrom(x => x.header.version))
-            //       .ForMember(destination => destination.header.dateMsg, map => map.AddTransform(x => new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)))
-            //       .ForMember(destination => destination.body.resourceState.id, map => map.MapFrom(x => x.body.itemSet.items.id))
-            //       .ForMember(destination => destination.body.resourceState.tags, map => map.MapFrom(x => x.body.itemSet.items.tags));
-            //  });
-
-            //IMapper iMapper = config.CreateMapper();
-            //ResourceResponseModel response = iMapper.Map<ResourceResponseModel>(request);
-            //return response;
         }
 
         public static string DataModelToGetResponseModel(ResourceGetRequestModel request, List<ResourceWithValue> resList)
