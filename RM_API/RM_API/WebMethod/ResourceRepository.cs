@@ -52,11 +52,11 @@ namespace RM_API.WebMethod
                 {
                     cmd.Connection = con;
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "Select r.Id,r.TypeId,t.Name as Type,r.StatusId,s.Name as Status,r.Name,r.LocationId,l.X,l.Y,l.Z,l.Rotation " +
+                    cmd.CommandText = @"Select r.Id,r.TypeId,t.Name as Type,r.StatusId,s.Name as Status,r.Name,r.LocationId,l.X,l.Y,l.Z,l.Rotation " +
                                       "from [3DX_RM_DB].[dbo].[ResourceTable] r left join [3DX_RM_DB].[dbo].[LocationTable] l " +
                                       "on r.LocationId = l.Id " +
-                                      "left join [3DX_RM_DB].[dbo].[StatusTable] s on r.StatusId = s.Id "+
-                                      "left join [3DX_RM_DB].[dbo].[TypeTable] t on r.TypeId = t.Id";
+                                      "left join [3DX_RM_DB].[dbo].[StatusTable] s on r.StatusId = s.Id " +
+                                      "left join [3DX_RM_DB].[dbo].[TypeTable] t on r.TypeId = t.Id where r.Id";
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
@@ -95,6 +95,62 @@ namespace RM_API.WebMethod
                 return resourceList;
             else
                 return new List<ResourceWithValue>() { resourceList.Find(x => x.Id == id) };
+        }
+        #endregion
+
+        #region Get Resource Information for 3ds client
+        public static List<ResourceWithValue> GetResourceInfoFor3ds(List<string> idStrArray)
+        {
+            List<ResourceWithValue> resourceList = new List<ResourceWithValue>();
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.Text;
+                    string idStr = (idStrArray.Count > 1) ? string.Join(" OR r.Id ", idStrArray) : idStrArray[0].ToString();
+                    cmd.CommandText = @"Select r.Id,r.TypeId,t.Name as Type,r.StatusId,s.Name as Status,r.Name,r.LocationId,l.X,l.Y,l.Z,l.Rotation " +
+                                      "from [3DX_RM_DB].[dbo].[ResourceTable] r left join [3DX_RM_DB].[dbo].[LocationTable] l " +
+                                      "on r.LocationId = l.Id " +
+                                      "left join [3DX_RM_DB].[dbo].[StatusTable] s on r.StatusId = s.Id " +
+                                      "left join [3DX_RM_DB].[dbo].[TypeTable] t on r.TypeId = t.Id where r.Id = " + idStr + "";
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            resourceList.Add(
+                                new ResourceWithValue
+                                {
+
+                                    Id = Convert.ToInt64(row["Id"]),
+                                    TypeId = Convert.ToInt32(row["TypeId"]),
+                                    Type = Convert.ToString(row["Type"]),
+                                    StatusId = Convert.ToInt32(row["StatusId"]),
+                                    Status = Convert.ToString(row["Status"]),
+                                    Name = Convert.ToString(row["Name"]),
+                                    LocationId = Convert.ToInt64(row["LocationId"]),
+                                    LocationValue = new Location()
+                                    {
+                                        Id = Convert.ToInt64(row["LocationId"]),
+                                        X = Convert.ToDecimal(row["X"]),
+                                        Y = Convert.ToDecimal(row["Y"]),
+                                        Z = Convert.ToDecimal(row["Z"]),
+                                        Rotation = Convert.ToDecimal(row["Rotation"])
+                                    }
+                                }
+                                );
+                        }
+                    }
+                }
+                con.Close();
+            }
+            return resourceList;
         }
         #endregion
 

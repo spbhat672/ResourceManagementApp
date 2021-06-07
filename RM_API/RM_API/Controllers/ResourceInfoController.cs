@@ -41,13 +41,20 @@ namespace RM_API.Controllers
                 // GET request
 
                 //var resource = ModelDataConversion.RequestModelToDataModel(myModel);
-                long? id;
-                if (myModel.body.itemSet.items[0].tags[0].tagId == "")
-                    id = null;
-                else
-                    id = Convert.ToInt64(myModel.body.itemSet.items[0].tags[0].tagId);
+                List<string> idArray = new List<string>();
+                int index = 0;
+                foreach(var x in myModel.body.itemSet.items[0].tags)
+                {
+                    if (x.tagId == "")
+                        continue;
+                    else
+                    {
+                        idArray[index] = myModel.body.itemSet.items[0].tags[0].tagId;
+                    }
+                }
+                
                 var resourceList = new List<ResourceWithValue>();
-                    resourceList = ResourceRepository.GetResourceInfo(id);
+                    resourceList = ResourceRepository.GetResourceInfoFor3ds(idArray);
 
                 var response = ModelDataConversion.DataModelToGetResponseModel(myModel, resourceList);
                     return Request.CreateResponse(System.Net.HttpStatusCode.OK, response);
@@ -112,6 +119,7 @@ namespace RM_API.Controllers
             {
                 List<ResourceWithValue> resourceList = ResourceRepository.GetResourceInfo(id);
                 return Request.CreateResponse(System.Net.HttpStatusCode.OK, resourceList);
+                return null;
             }
             catch (Exception ex)
             {
