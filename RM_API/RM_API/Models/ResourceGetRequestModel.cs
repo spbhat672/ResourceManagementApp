@@ -14,19 +14,13 @@ namespace RM_API.Models
         {
             public int requestId { get; set; }
             public string requestType { get; set; }
-            public Producer producer { get; set; }
-            public string version { get; set; }
             public DateTime dateMsg { get; set; }
-        }
-
-        public class Producer
-        {
-            public string id { get; set; }
+            public string context { get; set; }
         }
 
         public class Body
         {
-            public DateTime dates { get; set; }
+            public DateTime[] dates { get; set; }
             public ItemSet itemSet { get; set; }
 
         }
@@ -38,7 +32,15 @@ namespace RM_API.Models
 
         public class Items
         {
-            public long? id { get; set; }
+            public string id { get; set; }
+            public Tags tags { get; set; }
+        }
+
+        public class Tags
+        {
+            public string name { get; set; }
+            public string type { get; set; }
+            public string tagId { get; set; }
         }
     }
 }

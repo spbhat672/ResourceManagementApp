@@ -64,11 +64,9 @@ namespace RM_API.WebMethod
                                     'header': {
                                                 'sourceRequest': {
                                                                    'requestId': " + request.header.requestId + @"                                                                
-                                                                   'requestType': " + request.header.requestType + @"  
-	                                                               'version': " + request.header.version + @"  
+                                                                   'requestType': " + request.header.requestType + @"   
 	                                                             },
-	                                            'messageType':" + request.header.requestType + @"  
-	                                            'version':" + request.header.version + @"  
+	                                            'messageType':" + request.header.requestType + @"  	                                            
 	                                            'dateMsg':	" + request.header.dateMsg + @"  
 	                                     },
 	                                'body':{
@@ -78,7 +76,7 @@ namespace RM_API.WebMethod
 						                                             'tags': {";
 
             string jsonStr2 = "";
-            foreach(var x in resList)
+            foreach (var x in resList)
             {
                 jsonStr2 += @"{
                               'Id': " + x.Id + @" , 
@@ -94,10 +92,10 @@ namespace RM_API.WebMethod
 												'Z': " + x.LocationValue.Z + @" ,
 												'Rotation': " + x.LocationValue.Rotation + @"
                                                 }, 
-							  'Name': " + x.Name +"" +
+							  'Name': " + x.Name + "" +
                               "},";
             }
-            string jsonStr3 =              @"}
+            string jsonStr3 = @"}
                                         }
                                     }
                                 }";

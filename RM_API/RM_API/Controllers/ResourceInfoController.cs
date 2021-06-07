@@ -24,30 +24,34 @@ namespace RM_API.Controllers
             try
             {
                 JObject jObj = JObject.Parse(model);
-                ResourceRequestModel myModel = new ResourceRequestModel();
-                myModel = jObj.ToObject<ResourceRequestModel>();
-                if (myModel.body.itemSet.items.tags.Id == 0)
-                {
-                    // POST request
+                ResourceGetRequestModel myModel = new ResourceGetRequestModel();
+                myModel = jObj.ToObject<ResourceGetRequestModel>();
+                //if (Convert.ToInt32(myModel.body.itemSet.items.tags.tagId) == 0)
+                //{
+                //    // POST request
 
-                    var resource = ModelDataConversion.RequestModelToDataModel(myModel);
-                    ResourceRepository.AddResourceInfo(resource);
+                //    var resource = ModelDataConversion.RequestModelToDataModel(myModel);
+                //    ResourceRepository.AddResourceInfo(resource);
 
-                    var response = ModelDataConversion.DataModelToResponseModel(myModel);
-                    return Request.CreateResponse(System.Net.HttpStatusCode.OK, model);
-                }
+                //    var response = ModelDataConversion.DataModelToResponseModel(myModel);
+                //    return Request.CreateResponse(System.Net.HttpStatusCode.OK, model);
+                //}
+                //else
+                //{
+                // GET request
+
+                //var resource = ModelDataConversion.RequestModelToDataModel(myModel);
+                long? id;
+                if (myModel.body.itemSet.items.tags.tagId == "")
+                    id = null;
                 else
-                {
-                    // GET request
-                   
-                    var resource = ModelDataConversion.RequestModelToDataModel(myModel);
-                    long? id = resource.Id;
-                    var resourceList = new List<ResourceWithValue>();
+                    id = Convert.ToInt64(myModel.body.itemSet.items.tags.tagId);
+                var resourceList = new List<ResourceWithValue>();
                     resourceList = ResourceRepository.GetResourceInfo(id);
 
-                    var response = ModelDataConversion.DataModelToResponseModel(myModel);
+                var response = ModelDataConversion.DataModelToGetResponseModel(myModel, resourceList);
                     return Request.CreateResponse(System.Net.HttpStatusCode.OK, response);
-                }
+                //}
                 
             }
             catch (Exception ex)
