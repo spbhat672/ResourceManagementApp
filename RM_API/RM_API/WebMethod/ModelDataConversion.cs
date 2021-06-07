@@ -71,7 +71,7 @@ namespace RM_API.WebMethod
 	                                     },
 	                                'body':{
                                                 'resourceState': {
-                                                                    'id':" + request.body.itemSet.items.id + @" 
+                                                                    'id':" + request.body.itemSet.items[0].id + @" 
 			                                                        'updateDataDate':" + DateTime.Now + @"
 						                                             'tags': {";
 

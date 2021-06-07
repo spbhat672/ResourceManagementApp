@@ -27,13 +27,13 @@ namespace RM_API.Models
 
         public class ItemSet
         {
-            public Items items { get; set; }
+            public Items[] items { get; set; }
         }
 
         public class Items
         {
             public string id { get; set; }
-            public Tags tags { get; set; }
+            public Tags[] tags { get; set; }
         }
 
         public class Tags

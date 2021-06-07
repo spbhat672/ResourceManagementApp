@@ -42,10 +42,10 @@ namespace RM_API.Controllers
 
                 //var resource = ModelDataConversion.RequestModelToDataModel(myModel);
                 long? id;
-                if (myModel.body.itemSet.items.tags.tagId == "")
+                if (myModel.body.itemSet.items[0].tags[0].tagId == "")
                     id = null;
                 else
-                    id = Convert.ToInt64(myModel.body.itemSet.items.tags.tagId);
+                    id = Convert.ToInt64(myModel.body.itemSet.items[0].tags[0].tagId);
                 var resourceList = new List<ResourceWithValue>();
                     resourceList = ResourceRepository.GetResourceInfo(id);
 
