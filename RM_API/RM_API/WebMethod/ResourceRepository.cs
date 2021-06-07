@@ -110,12 +110,18 @@ namespace RM_API.WebMethod
                 {
                     cmd.Connection = con;
                     cmd.CommandType = CommandType.Text;
-                    string idStr = (idStrArray.Count > 1) ? string.Join(" OR r.Id = ", idStrArray) : idStrArray[0].ToString();
+                    for(int x=0; x < idStrArray.Count; x++)
+                    {
+                        if (String.IsNullOrEmpty(idStrArray[x]))
+                            idStrArray[x] = "''";
+                    }
+                    string idStr = (idStrArray.Count >= 1) ? string.Join(" OR r.Id = ", idStrArray) : string.Empty;
+                    string whereCon = (String.IsNullOrEmpty(idStr)) ? "" : ("where r.Id =" + idStr);
                     cmd.CommandText = @"Select r.Id,r.TypeId,t.Name as Type,r.StatusId,s.Name as Status,r.Name,r.LocationId,l.X,l.Y,l.Z,l.Rotation " +
                                       "from [3DX_RM_DB].[dbo].[ResourceTable] r left join [3DX_RM_DB].[dbo].[LocationTable] l " +
                                       "on r.LocationId = l.Id " +
                                       "left join [3DX_RM_DB].[dbo].[StatusTable] s on r.StatusId = s.Id " +
-                                      "left join [3DX_RM_DB].[dbo].[TypeTable] t on r.TypeId = t.Id where r.Id = " + idStr + "";
+                                      "left join [3DX_RM_DB].[dbo].[TypeTable] t on r.TypeId = t.Id " + whereCon;
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {

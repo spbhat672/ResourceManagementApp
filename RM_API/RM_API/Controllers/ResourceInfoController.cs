@@ -42,14 +42,10 @@ namespace RM_API.Controllers
 
                 //var resource = ModelDataConversion.RequestModelToDataModel(myModel);
                 List<string> idArray = new List<string>();
-                foreach(var x in myModel.body.itemSet.items[0].tags)
+                foreach(var x in myModel.body.itemSet.items)
                 {
-                    if (x.tagId == "")
-                        continue;
-                    else
-                    {
-                        idArray.Add(x.tagId);
-                    }
+                        idArray.Add(x.id);
+
                 }
                 
                 var resourceList = new List<ResourceWithValue>();
