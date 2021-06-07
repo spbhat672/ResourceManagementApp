@@ -110,7 +110,7 @@ namespace RM_API.WebMethod
                 {
                     cmd.Connection = con;
                     cmd.CommandType = CommandType.Text;
-                    string idStr = (idStrArray.Count > 1) ? string.Join(" OR r.Id ", idStrArray) : idStrArray[0].ToString();
+                    string idStr = (idStrArray.Count > 1) ? string.Join(" OR r.Id = ", idStrArray) : idStrArray[0].ToString();
                     cmd.CommandText = @"Select r.Id,r.TypeId,t.Name as Type,r.StatusId,s.Name as Status,r.Name,r.LocationId,l.X,l.Y,l.Z,l.Rotation " +
                                       "from [3DX_RM_DB].[dbo].[ResourceTable] r left join [3DX_RM_DB].[dbo].[LocationTable] l " +
                                       "on r.LocationId = l.Id " +
