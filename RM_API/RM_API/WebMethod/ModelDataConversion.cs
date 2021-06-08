@@ -63,11 +63,16 @@ namespace RM_API.WebMethod
             string jsonStr1 = @"{  
                                     'header': {
                                                 'sourceRequest': {
-                                                                   'requestId': " + request.header.requestId + @"                                                                
-                                                                   'requestType': " + request.header.requestType + @"   
+                                                                   'requestId': " + request.header.requestId + @",                                                                
+                                                                   'requestType': " + request.header.requestType + @",  
+                                                                   'version': 1.0  
 	                                                             },
-	                                            'messageType':" + request.header.requestType + @"  	                                            
-	                                            'dateMsg':	" + request.header.dateMsg + @"  
+	                                            'messageType':{
+                                                                    'messageType':" + request.header.requestType + @", 
+                                                                    'version': 1.0  
+	                                                             },
+                                                'version': 1.0
+	                                            'dateMsg':	" + request.header.dateMsg + @",                                                
 	                                     },
 	                                'body':{
                                                 'resourceState': {
